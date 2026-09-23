@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=Barlow:ital,wght@0,400;0,500;0,600;1,500&amp;display=swap" rel="stylesheet" />
+<style>
+  html, body { margin:0; padding:0; background:#FDF8F0; color:#152342;
+    font-family:Barlow, system-ui, -apple-system, "Segoe UI", sans-serif; font-size:17px; line-height:1.55;
+    -webkit-font-smoothing:antialiased; }
+  a { color:#C24A16; text-decoration:none; }
+  a:hover { color:#152342; }
+  button:focus-visible, input:focus-visible { outline:2px solid #F0B429; outline-offset:2px; }
+</style>
+</helmet>
+<div style="max-width:1100px;margin:0 auto;background:#FDF8F0;overflow:hidden">
+
+  <header style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 40px;border-bottom:1px solid #E4DACA;flex-wrap:wrap">
+    <button onClick="{{ goHome }}" style="display:flex;align-items:center;gap:14px;background:none;border:none;padding:0;cursor:pointer;text-align:left">
+      <span style="width:46px;height:46px;border-radius:50%;border:2px solid #152342;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;color:#152342">SG</span>
+      <span>
+        <span style="display:block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:20px;letter-spacing:0.04em;line-height:1;text-transform:uppercase;color:#152342">SG Tennis Academy</span>
+        <span style="display:block;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#7A6A52;margin-top:3px">Memorial Northwest · Spring, TX</span>
+      </span>
+    </button>
+    <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+      <button onClick="{{ goHome }}" style="background:none;border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:16px;letter-spacing:0.08em;text-transform:uppercase;color:{{ navHomeColor }}">The program</button>
+      <button onClick="{{ goPortal }}" style="background:none;border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:16px;letter-spacing:0.08em;text-transform:uppercase;color:{{ navPortalColor }}">Player portal</button>
+      <button onClick="{{ goCoach }}" style="background:none;border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:16px;letter-spacing:0.08em;text-transform:uppercase;color:{{ navCoachColor }}">Coach tools</button>
+      <button onClick="{{ goPortal }}" style="border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:16px;letter-spacing:0.08em;text-transform:uppercase;background:#C24A16;color:#fff;padding:9px 18px;border-radius:2px">Book a session</button>
+    </div>
+  </header>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+
+    <section style="display:grid;grid-template-columns:1.02fr 1fr;border-bottom:1px solid #E4DACA">
+      <div style="padding:54px 40px 50px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.18em;text-transform:uppercase;color:#4F6B1E">Fall season · Aug 17 – Dec 31</div>
+        <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:70px;line-height:0.94;letter-spacing:-0.01em;text-transform:uppercase;margin:14px 0 0">Now enrolling<br />at Memorial NW</h1>
+        <p style="font-size:19px;line-height:1.6;max-width:44ch;margin:20px 0 0;color:#3B4A63;text-wrap:pretty">Junior drills Monday through Thursday, match play on Saturdays, and camps over every school break. Coached groups are capped so every player hits, and spots are limited.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px">
+          <button onClick="{{ goPortal }}" style="border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;letter-spacing:0.08em;text-transform:uppercase;background:#152342;color:#fff;padding:14px 26px;border-radius:2px">Reserve a spot</button>
+          <a href="#sessions" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;letter-spacing:0.08em;text-transform:uppercase;border:2px solid #152342;color:#152342;padding:12px 26px;border-radius:2px">See session dates</a>
+        </div>
+        <div style="display:flex;gap:30px;flex-wrap:wrap;margin-top:34px;padding-top:24px;border-top:1px solid #E4DACA">
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:30px;line-height:1">8</div>
+            <div style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#7A6A52">sessions &amp; camps</div>
+          </div>
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:30px;line-height:1">5 days</div>
+            <div style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#7A6A52">on court each week</div>
+          </div>
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:30px;line-height:1">$85</div>
+            <div style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#7A6A52">drop-in, no commitment</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#152342;display:flex;align-items:center;justify-content:center;padding:28px">
+        <img src="uploads/ChatGPT Image Sep 3, 2026, 09_54_37 PM.png" alt="SG Tennis Academy fall season flier" style="display:block;max-width:100%;max-height:640px;height:auto;box-shadow:0 18px 40px rgba(0,0,0,.35)" />
+      </div>
+    </section>
+
+    <section id="sessions" style="padding:48px 40px;border-bottom:1px solid #E4DACA">
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:34px;letter-spacing:0.02em;text-transform:uppercase;margin:0 0 6px">Session dates</h2>
+      <p style="margin:0 0 26px;color:#7A6A52">Aug 17 through Dec 31. Camps run over Thanksgiving, Christmas and New Year.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px">
+        <sc-for list="{{ sessionList }}" as="s" hint-placeholder-count="8">
+          <div style="border:1px solid #E4DACA;background:#fff;padding:14px 16px;border-left:4px solid {{ s.accent }}">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;letter-spacing:0.04em;text-transform:uppercase">{{ s.name }}</div>
+            <div style="font-size:17px;margin-top:2px">{{ s.dates }}</div>
+            <div style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:#7A6A52;margin-top:6px">{{ s.length }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #E4DACA">
+      <div style="padding:44px 40px;border-right:1px solid #E4DACA">
+        <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:30px;letter-spacing:0.02em;text-transform:uppercase;margin:0 0 18px">Weekly schedule</h2>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;justify-content:space-between;gap:16px;padding-bottom:14px;border-bottom:1px dashed #DCCDB4">
+            <div>
+              <div style="font-weight:600">Monday – Thursday</div>
+              <div style="color:#7A6A52;font-size:15px">Drills · juniors, all levels</div>
+            </div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:22px;color:#C24A16;white-space:nowrap">4:30 – 6:30 PM</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;gap:16px">
+            <div>
+              <div style="font-weight:600">Saturday</div>
+              <div style="color:#7A6A52;font-size:15px">Match play · $75 per Saturday</div>
+            </div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:22px;color:#C24A16;white-space:nowrap">12:00 – 3:00 PM</div>
+          </div>
+        </div>
+        <div style="margin-top:26px;padding-top:20px;border-top:1px solid #E4DACA">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;letter-spacing:0.1em;text-transform:uppercase;color:#4F6B1E">Where</div>
+          <div style="margin-top:6px;font-size:18px">Memorial Northwest Subdivision<br />17440 Theiss Mail Route Rd, Spring, TX 77379</div>
+        </div>
+      </div>
+      <div id="pricing" style="padding:44px 40px">
+        <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:30px;letter-spacing:0.02em;text-transform:uppercase;margin:0 0 18px">Pricing</h2>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ priceList }}" as="p" hint-placeholder-count="4">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;background:#fff;border:1px solid #E4DACA;padding:14px 16px">
+              <div>
+                <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;letter-spacing:0.04em;text-transform:uppercase">{{ p.name }}</div>
+                <div style="font-size:14.5px;color:#7A6A52">{{ p.note }}</div>
+              </div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:30px;color:#152342;white-space:nowrap">{{ p.price }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:18px;background:#4F6B1E;color:#fff;padding:16px 18px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;letter-spacing:0.14em;text-transform:uppercase">Cancellations</div>
+          <div style="margin-top:8px;font-size:15.5px;line-height:1.6">Seven or more days notice, full refund. Cancel by 5pm the prior day, $50 back. Later than that, the spot is held and the credit is used.</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #E4DACA">
+      <div style="padding:44px 40px;border-right:1px solid #E4DACA">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:14px;letter-spacing:0.18em;text-transform:uppercase;color:#4F6B1E">Train between sessions</div>
+        <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:34px;letter-spacing:0.02em;text-transform:uppercase;margin:8px 0 10px">{{ courseName }}</h2>
+        <p style="margin:0 0 18px;color:#3B4A63;font-size:17.5px;max-width:46ch;text-wrap:pretty">{{ courseBlurb }}</p>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:22px">
+          <sc-for list="{{ courseIncludes }}" as="c" hint-placeholder-count="4">
+            <div style="display:flex;gap:10px;align-items:flex-start;font-size:16.5px">
+              <span style="flex:0 0 auto;width:8px;height:8px;margin-top:9px;background:#F0B429;border-radius:50%"></span>
+              <span style="flex:1 1 auto">{{ c.text }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:32px;line-height:1">{{ coursePrice }}</div>
+          <button onClick="{{ courseAct }}" style="border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;letter-spacing:0.08em;text-transform:uppercase;background:#C24A16;color:#fff;padding:13px 24px;border-radius:2px">{{ courseCta }}</button>
+        </div>
+      </div>
+      <div style="padding:44px 40px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px">Curriculum</div>
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ courseModules }}" as="m" hint-placeholder-count="6">
+            <div style="display:flex;gap:14px;align-items:baseline;padding:11px 0;border-bottom:1px solid #E4DACA">
+              <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;color:#C24A16;flex:0 0 auto">{{ m.n }}</span>
+              <span style="flex:1 1 auto;font-size:16.5px">{{ m.title }}</span>
+              <span style="flex:0 0 auto;font-size:14px;color:#7A6A52;white-space:nowrap">{{ m.len }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="font-size:14.5px;color:#7A6A52;margin-top:12px">Six more modules unlock through the season.</div>
+      </div>
+    </section>
+
+    <section id="enroll" style="padding:48px 40px;background:#152342;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap">
+      <div>
+        <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:36px;letter-spacing:0.02em;text-transform:uppercase;margin:0">Book your session</h2>
+        <p style="margin:8px 0 0;color:#C9D3E4;font-size:18px">Buy credits in the portal, then pick your days. Or call us — David 817-995-1001, Sammy 832-724-8891.</p>
+      </div>
+      <button onClick="{{ goPortal }}" style="border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;letter-spacing:0.08em;text-transform:uppercase;background:#F0B429;color:#152342;padding:16px 30px;border-radius:2px">Open the player portal</button>
+    </section>
+
+  </sc-if>
+
+  <sc-if value="{{ isPortal }}">
+
+    <section style="padding:34px 40px 0">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap">
+        <div>
+          <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:40px;letter-spacing:0.02em;text-transform:uppercase;margin:0">Player portal</h1>
+          <p style="margin:4px 0 0;color:#7A6A52">{{ playerLine }}</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <div style="background:#152342;color:#fff;padding:12px 20px;min-width:120px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:34px;line-height:1">{{ drillCredits }}</div>
+            <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#C9D3E4">drill credits</div>
+          </div>
+          <div style="background:#4F6B1E;color:#fff;padding:12px 20px;min-width:120px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:34px;line-height:1">{{ matchCredits }}</div>
+            <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#DDE7C6">match credits</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:26px 40px 0">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px">
+        <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6A52">Player</span>
+        <sc-for list="{{ playerTabs }}" as="p" hint-placeholder-count="2">
+          <button onClick="{{ p.pick }}" style="cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;letter-spacing:0.08em;text-transform:uppercase;padding:8px 18px;border-radius:2px;background:{{ p.bg }};color:{{ p.fg }};border:1px solid {{ p.bd }}">{{ p.label }}</button>
+        </sc-for>
+      </div>
+
+      <div style="border:1px solid #E4DACA;background:#fff">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding:18px 20px;border-bottom:1px solid #EFE7D8">
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:26px;letter-spacing:0.03em;text-transform:uppercase;line-height:1">{{ playerName }}</div>
+            <div style="font-size:14.5px;color:#7A6A52;margin-top:3px">{{ playerMeta }}</div>
+          </div>
+          <div style="max-width:46ch;font-size:15.5px;color:#3B4A63;text-wrap:pretty"><span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#4F6B1E;display:block">This season's focus</span>{{ playerFocus }}</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">
+          <sc-for list="{{ progressStats }}" as="s" hint-placeholder-count="4">
+            <div style="padding:16px 20px;border-right:1px solid #EFE7D8;border-bottom:1px solid #EFE7D8">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:32px;line-height:1">{{ s.figure }}</div>
+              <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#7A6A52;margin-top:4px">{{ s.label }}</div>
+              <div style="font-size:14px;color:#4F6B1E;margin-top:2px">{{ s.sub }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1.4fr 1fr">
+          <div style="padding:18px 20px;border-right:1px solid #EFE7D8">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px">Goals</div>
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <sc-for list="{{ goalRows }}" as="g" hint-placeholder-count="3">
+                <div>
+                  <div style="display:flex;justify-content:space-between;gap:14px;align-items:baseline">
+                    <span style="font-weight:600;font-size:16px">{{ g.label }}</span>
+                    <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;white-space:nowrap">{{ g.pctTxt }}</span>
+                  </div>
+                  <div style="font-size:14px;color:#7A6A52;margin:2px 0 6px">{{ g.value }}</div>
+                  <span style="position:relative;display:block;height:9px;background:#EFE7D8;border-radius:1px"><i style="position:absolute;top:0;bottom:0;left:0;border-radius:1px;display:block;background:{{ g.barColor }};width:{{ g.barW }}"></i></span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="padding:18px 20px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px">Coach notes</div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <sc-for list="{{ coachNotes }}" as="n" hint-placeholder-count="2">
+                <div style="border-left:3px solid #F0B429;padding-left:12px">
+                  <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#7A6A52">{{ n.date }}</div>
+                  <div style="font-size:15.5px;color:#3B4A63;text-wrap:pretty">{{ n.text }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:grid;grid-template-columns:1.35fr 1fr;gap:0;padding:26px 0 0">
+      <div style="padding:0 30px 40px 40px">
+        <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:24px;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 4px">Schedule</h2>
+        <p style="margin:0 0 16px;color:#7A6A52;font-size:15.5px">{{ scheduleNote }}</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ slots }}" as="s" hint-placeholder-count="8">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;background:#fff;border:1px solid #E4DACA;border-left:4px solid {{ s.accent }};padding:12px 14px">
+              <div style="min-width:0">
+                <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;letter-spacing:0.04em;text-transform:uppercase">{{ s.day }}</div>
+                <div style="font-size:15px;color:#3B4A63">{{ s.detail }}</div>
+                <div style="font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:#7A6A52;margin-top:2px">{{ s.sessionName }}</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;flex:0 0 auto">
+                <div style="text-align:right">
+                  <div style="font-size:13px;color:{{ s.spotsColor }}">{{ s.spots }}</div>
+                </div>
+                <button onClick="{{ s.act }}" style="border:1px solid {{ s.btnBd }};background:{{ s.btnBg }};color:{{ s.btnFg }};cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;padding:9px 16px;border-radius:2px;white-space:nowrap">{{ s.btnLabel }}</button>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="padding:0 40px 40px 30px">
+        <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:24px;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 4px">Buy credits</h2>
+        <p style="margin:0 0 16px;color:#7A6A52;font-size:15.5px">Credits never expire inside the fall season.</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ packs }}" as="p" hint-placeholder-count="4">
+            <div style="background:#fff;border:1px solid #E4DACA;padding:14px 16px">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+                <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;letter-spacing:0.04em;text-transform:uppercase">{{ p.name }}</div>
+                <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:26px;white-space:nowrap">{{ p.price }}</div>
+              </div>
+              <div style="font-size:14.5px;color:#7A6A52;margin:2px 0 10px">{{ p.note }}</div>
+              <button onClick="{{ p.buy }}" style="width:100%;border:none;cursor:pointer;background:#C24A16;color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;letter-spacing:0.08em;text-transform:uppercase;padding:11px 0;border-radius:2px">Add to cart</button>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="margin-top:16px;border:2px solid #152342;padding:14px 16px;background:#fff">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;letter-spacing:0.12em;text-transform:uppercase">Cart</div>
+          <div style="display:flex;flex-direction:column;gap:6px;margin:10px 0">
+            <sc-for list="{{ cart }}" as="c" hint-placeholder-count="2">
+              <div style="display:flex;justify-content:space-between;gap:12px;font-size:15.5px;border-bottom:1px dashed #DCCDB4;padding-bottom:6px">
+                <span>{{ c.line }}</span>
+                <span style="display:flex;gap:10px;align-items:baseline;white-space:nowrap">{{ c.amount }}<button onClick="{{ c.remove }}" style="background:none;border:none;color:#C24A16;cursor:pointer;font-size:14px;text-decoration:underline;padding:0">remove</button></span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:22px;letter-spacing:0.04em;text-transform:uppercase">
+            <span>Total</span><span>{{ cartTotal }}</span>
+          </div>
+          <button onClick="{{ checkout }}" style="width:100%;margin-top:12px;border:none;cursor:pointer;background:{{ checkoutBg }};color:{{ checkoutFg }};font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;letter-spacing:0.08em;text-transform:uppercase;padding:13px 0;border-radius:2px">{{ checkoutLabel }}</button>
+          <div style="font-size:14px;color:#7A6A52;margin-top:8px">{{ portalMsg }}</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:0 40px 34px">
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:24px;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 4px">School &amp; travel</h2>
+      <p style="margin:0 0 16px;color:#7A6A52;font-size:15.5px">{{ schoolName }} · {{ schoolGrade }} · attendance office {{ schoolClerk }}</p>
+
+      <div style="border:1px solid #E4DACA;background:#fff;margin-bottom:22px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
+          <sc-for list="{{ attStats }}" as="s" hint-placeholder-count="3">
+            <div style="padding:16px 20px;border-right:1px solid #EFE7D8;border-bottom:1px solid #EFE7D8">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:32px;line-height:1">{{ s.figure }}</div>
+              <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#7A6A52;margin-top:4px">{{ s.label }}</div>
+              <div style="font-size:14px;color:#4F6B1E;margin-top:2px">{{ s.sub }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="padding:16px 20px">
+          <span style="position:relative;display:block;height:10px;background:#EFE7D8;border-radius:1px"><i style="position:absolute;top:0;bottom:0;left:0;border-radius:1px;display:block;background:{{ attBarColor }};width:{{ attBarW }}"></i></span>
+          <div style="font-size:14.5px;color:#7A6A52;margin-top:6px">{{ attBarNote }}</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1.15fr;gap:22px;margin-bottom:22px">
+        <div>
+          <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6A52;margin-bottom:8px">Absence log</div>
+          <div style="background:#fff;border:1px solid #E4DACA">
+            <sc-for list="{{ absenceRows }}" as="a" hint-placeholder-count="4">
+              <div style="display:flex;justify-content:space-between;gap:14px;align-items:center;padding:11px 14px;border-bottom:1px solid #F5EFE4">
+                <div style="min-width:0">
+                  <div style="font-weight:600;font-size:15.5px">{{ a.date }} · {{ a.reason }}</div>
+                  <div style="font-size:13.5px;color:{{ a.docColor }}">{{ a.doc }}</div>
+                </div>
+                <span style="flex:0 0 auto;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border-radius:2px;background:{{ a.statusBg }};color:{{ a.statusFg }}">{{ a.status }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6A52;margin-bottom:8px">Absence request letter</div>
+          <div style="background:#fff;border:1px solid #E4DACA;padding:16px 18px">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+              <input type="text" placeholder="Tournament" value="{{ travelName }}" onChange="{{ setTravelName }}" style="font-family:Barlow,sans-serif;font-size:15.5px;padding:9px 11px;border:1px solid #D8CCB6;border-radius:2px;background:#FDFBF6;color:#152342" />
+              <input type="text" placeholder="City" value="{{ travelCity }}" onChange="{{ setTravelCity }}" style="font-family:Barlow,sans-serif;font-size:15.5px;padding:9px 11px;border:1px solid #D8CCB6;border-radius:2px;background:#FDFBF6;color:#152342" />
+            </div>
+            <input type="text" placeholder="Dates missed — e.g. Sep 11–12" value="{{ travelDates }}" onChange="{{ setTravelDates }}" style="width:100%;font-family:Barlow,sans-serif;font-size:15.5px;padding:9px 11px;border:1px solid #D8CCB6;border-radius:2px;background:#FDFBF6;color:#152342;margin-bottom:12px" />
+            <pre style="white-space:pre-wrap;font-family:Barlow,sans-serif;font-size:15px;line-height:1.6;color:#3B4A63;background:#FAF6EE;border:1px solid #EFE7D8;padding:12px 14px;margin:0;max-height:230px;overflow:auto">{{ letterText }}</pre>
+            <button onClick="{{ copyLetter }}" style="margin-top:12px;border:none;cursor:pointer;background:#152342;color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;letter-spacing:0.08em;text-transform:uppercase;padding:11px 22px;border-radius:2px">Copy letter</button>
+            <div style="font-size:14px;color:#4F6B1E;margin-top:8px">{{ letterMsg }}</div>
+          </div>
+        </div>
+      </div>
+
+      <sc-if value="{{ showCore }}">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:8px">
+          <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6A52">NCAA core courses</span>
+          <span style="font-size:14.5px;color:#4F6B1E">{{ coreSummary }}</span>
+        </div>
+        <div style="background:#fff;border:1px solid #E4DACA;padding:16px 18px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px">
+            <sc-for list="{{ coreRows }}" as="c" hint-placeholder-count="5">
+              <div>
+                <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline">
+                  <span style="font-weight:600;font-size:16px">{{ c.area }}</span>
+                  <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px">{{ c.count }}</span>
+                </div>
+                <div style="font-size:13.5px;color:#7A6A52;margin:2px 0 6px">{{ c.note }}</div>
+                <span style="position:relative;display:block;height:8px;background:#EFE7D8;border-radius:1px"><i style="position:absolute;top:0;bottom:0;left:0;border-radius:1px;display:block;background:{{ c.barColor }};width:{{ c.barW }}"></i></span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="border-left:3px solid #F0B429;background:#FFF8E8;padding:12px 14px;font-size:15px;color:#3B4A63;margin-top:16px;text-wrap:pretty">{{ coreNote }}</div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ hideCore }}">
+        <div style="border-left:3px solid #F0B429;background:#FFF8E8;padding:12px 14px;font-size:15px;color:#3B4A63">{{ youngNote }}</div>
+      </sc-if>
+    </section>
+
+    <section style="padding:0 40px 34px">
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:24px;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 4px">Message the academy</h2>
+      <p style="margin:0 0 14px;color:#7A6A52;font-size:15.5px">One inbox for cancellations, make-ups and billing. Whoever is on duty answers, so nothing sits on a coach's personal phone.</p>
+      <div style="display:grid;grid-template-columns:1fr 1.15fr;gap:22px">
+        <div style="background:#fff;border:1px solid #E4DACA;padding:16px 18px">
+          <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6A52;margin-bottom:6px">What is it about</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+            <sc-for list="{{ msgTopics }}" as="t" hint-placeholder-count="5">
+              <button onClick="{{ t.pick }}" style="cursor:pointer;font-size:14px;padding:6px 12px;border-radius:2px;background:{{ t.bg }};color:{{ t.fg }};border:1px solid {{ t.bd }}">{{ t.label }}</button>
+            </sc-for>
+          </div>
+          <textarea value="{{ msgDraft }}" onChange="{{ setMsgDraft }}" placeholder="We are out of town Thursday — can the credit move to Saturday?" style="width:100%;min-height:96px;font-family:Barlow,sans-serif;font-size:16px;padding:10px 12px;border:1px solid #D8CCB6;border-radius:2px;background:#FDFBF6;color:#152342"></textarea>
+          <button onClick="{{ sendMessage }}" style="margin-top:10px;border:none;cursor:pointer;background:#C24A16;color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;letter-spacing:0.08em;text-transform:uppercase;padding:11px 22px;border-radius:2px">Send message</button>
+          <div style="font-size:14px;color:#C24A16;margin-top:8px">{{ msgErr }}</div>
+        </div>
+        <div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <sc-for list="{{ myThreads }}" as="t" hint-placeholder-count="2">
+              <div style="background:#fff;border:1px solid #E4DACA;padding:14px 16px">
+                <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap">
+                  <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;letter-spacing:0.04em;text-transform:uppercase">{{ t.subject }}</span>
+                  <span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:2px;background:{{ t.statusBg }};color:{{ t.statusFg }}">{{ t.statusLabel }}</span>
+                </div>
+                <div style="font-size:13px;color:#7A6A52;margin-bottom:10px">{{ t.meta }}</div>
+                <div style="display:flex;flex-direction:column;gap:8px">
+                  <sc-for list="{{ t.msgs }}" as="m" hint-placeholder-count="2">
+                    <div style="display:flex;flex-direction:column;align-items:{{ m.align }}">
+                      <div style="max-width:88%;background:{{ m.bg }};color:{{ m.fg }};padding:9px 12px;border-radius:3px;font-size:15.5px;text-wrap:pretty">{{ m.text }}</div>
+                      <div style="font-size:12px;color:#7A6A52;margin-top:3px">{{ m.who }}</div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="font-size:15px;color:#7A6A52;margin-top:8px">{{ noThreads }}</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:0 40px 34px">
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:24px;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 4px">How was your session?</h2>
+      <p style="margin:0 0 14px;color:#7A6A52;font-size:15.5px">Goes straight to your coach. It shapes next week's plan.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+        <div style="background:#fff;border:1px solid #E4DACA;padding:16px 18px">
+          <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6A52;margin-bottom:6px">Which session</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+            <sc-for list="{{ fbAboutBtns }}" as="a" hint-placeholder-count="4">
+              <button onClick="{{ a.pick }}" style="cursor:pointer;font-size:14px;padding:6px 12px;border-radius:2px;background:{{ a.bg }};color:{{ a.fg }};border:1px solid {{ a.bd }}">{{ a.label }}</button>
+            </sc-for>
+          </div>
+          <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6A52;margin-bottom:4px">Rating</div>
+          <div style="display:flex;gap:4px;margin-bottom:14px">
+            <sc-for list="{{ fbStars }}" as="s" hint-placeholder-count="5">
+              <button onClick="{{ s.set }}" style="background:none;border:none;cursor:pointer;font-size:30px;line-height:1;padding:0 2px;color:{{ s.color }}">{{ s.glyph }}</button>
+            </sc-for>
+          </div>
+          <label style="display:block;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6A52;margin-bottom:4px">What worked, what didn't</label>
+          <textarea value="{{ fbText }}" onChange="{{ setFbText }}" placeholder="Drills were good but I want more serve work." style="width:100%;min-height:90px;font-family:Barlow,sans-serif;font-size:16px;padding:10px 12px;border:1px solid #D8CCB6;border-radius:2px;background:#FDFBF6;color:#152342"></textarea>
+          <button onClick="{{ submitFeedback }}" style="margin-top:10px;border:none;cursor:pointer;background:#4F6B1E;color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;letter-spacing:0.08em;text-transform:uppercase;padding:11px 22px;border-radius:2px">Send to coach</button>
+          <div style="font-size:14px;color:#4F6B1E;margin-top:8px">{{ fbMsg }}</div>
+        </div>
+        <div>
+          <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6A52;margin-bottom:8px">Your past feedback</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ fbHistory }}" as="f" hint-placeholder-count="2">
+              <div style="background:#fff;border:1px solid #E4DACA;border-left:4px solid #F0B429;padding:12px 14px">
+                <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap">
+                  <span style="color:#F0B429;font-size:17px;letter-spacing:2px">{{ f.stars }}</span>
+                  <span style="font-size:13px;color:#7A6A52">{{ f.about }}</span>
+                </div>
+                <div style="font-size:15.5px;color:#3B4A63;margin-top:4px;text-wrap:pretty">{{ f.text }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="font-size:15px;color:#7A6A52;margin-top:8px">{{ fbEmpty }}</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:0 40px 46px">
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:24px;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 12px">Your booked sessions</h2>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <sc-for list="{{ bookingRows }}" as="b" hint-placeholder-count="2">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;background:#fff;border:1px solid #E4DACA;padding:12px 14px">
+            <div>
+              <div style="font-weight:600">{{ b.day }}</div>
+              <div style="font-size:14.5px;color:#7A6A52">{{ b.detail }}</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:flex-end">
+              <span style="font-size:14px;color:{{ b.refundColor }}">{{ b.refund }}</span>
+              <button onClick="{{ b.cancel }}" style="border:1px solid #C24A16;background:#fff;color:#C24A16;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;padding:8px 14px;border-radius:2px">Cancel</button>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="font-size:15px;color:#7A6A52;margin-top:10px">{{ bookingsEmpty }}</div>
+    </section>
+
+  </sc-if>
+
+  <sc-if value="{{ isCoach }}">
+    <section style="padding:34px 40px 12px">
+      <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:40px;letter-spacing:0.02em;text-transform:uppercase;margin:0">Weather &amp; cancellation notice</h1>
+      <p style="margin:4px 0 0;color:#7A6A52;max-width:70ch">Pick the session you are calling off, say why, choose the make-up slot. Everyone booked is moved to that slot, their credits stay intact, and the message is copied ready to send.</p>
+    </section>
+
+    <section style="display:grid;grid-template-columns:1fr 1fr;gap:0;padding:18px 0 44px">
+      <div style="padding:0 30px 0 40px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6A52;margin-bottom:8px">1 · Session being called off</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
+          <sc-for list="{{ coachDateBtns }}" as="c" hint-placeholder-count="6">
+            <button onClick="{{ c.pick }}" style="cursor:pointer;font-size:14px;padding:7px 13px;border-radius:2px;background:{{ c.bg }};color:{{ c.fg }};border:1px solid {{ c.bd }};white-space:nowrap">{{ c.label }}</button>
+          </sc-for>
+        </div>
+
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6A52;margin-bottom:8px">2 · Reason</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
+          <sc-for list="{{ reasonBtns }}" as="r" hint-placeholder-count="5">
+            <button onClick="{{ r.pick }}" style="cursor:pointer;font-size:14px;padding:7px 13px;border-radius:2px;background:{{ r.bg }};color:{{ r.fg }};border:1px solid {{ r.bd }};white-space:nowrap">{{ r.label }}</button>
+          </sc-for>
+        </div>
+
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6A52;margin-bottom:8px">3 · Make-up slot they are offered</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+          <sc-for list="{{ makeupBtns }}" as="m" hint-placeholder-count="4">
+            <button onClick="{{ m.pick }}" style="cursor:pointer;font-size:14px;padding:7px 13px;border-radius:2px;background:{{ m.bg }};color:{{ m.fg }};border:1px solid {{ m.bd }};white-space:nowrap">{{ m.label }}</button>
+          </sc-for>
+        </div>
+        <div style="font-size:15px;color:#4F6B1E">{{ makeupLine }}</div>
+
+        <div style="margin-top:24px;border:1px solid #E4DACA;background:#fff">
+          <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:12px 16px;border-bottom:1px solid #EFE7D8">
+            <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;letter-spacing:0.12em;text-transform:uppercase">Who gets this</span>
+            <span style="font-size:14px;color:#7A6A52">{{ rosterCount }}</span>
+          </div>
+          <sc-for list="{{ rosterRows }}" as="r" hint-placeholder-count="7">
+            <div style="display:flex;justify-content:space-between;gap:14px;padding:9px 16px;border-bottom:1px solid #F5EFE4;font-size:15px">
+              <span>{{ r.name }}</span>
+              <span style="color:#7A6A52;font-size:14px;text-align:right">{{ r.contact }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="padding:0 40px 0 30px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6A52;margin-bottom:8px">Message</div>
+        <div style="background:#152342;color:#fff;padding:16px 18px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;letter-spacing:0.04em;text-transform:uppercase">{{ coachHeadline }}</div>
+          <div style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#9FB0CA;margin-top:2px">{{ coachSession }}</div>
+          <pre style="white-space:pre-wrap;font-family:Barlow,sans-serif;font-size:16px;line-height:1.6;color:#E8EDF6;margin:14px 0 0">{{ noticeText }}</pre>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+          <button onClick="{{ sendNotice }}" style="border:none;cursor:pointer;background:#C24A16;color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;letter-spacing:0.08em;text-transform:uppercase;padding:13px 22px;border-radius:2px">Send &amp; move everyone</button>
+          <button onClick="{{ copyNotice }}" style="cursor:pointer;background:#fff;color:#152342;border:2px solid #152342;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;letter-spacing:0.08em;text-transform:uppercase;padding:11px 22px;border-radius:2px">Copy message only</button>
+        </div>
+        <div style="font-size:15px;color:#4F6B1E;margin-top:10px">{{ coachSent }}</div>
+        <div style="margin-top:18px;border-left:3px solid #F0B429;background:#FFF8E8;padding:12px 14px;font-size:15px;color:#3B4A63;text-wrap:pretty">Texts need a written opt-in from each parent and a working reply-STOP. Email carries the same notice with no opt-in problem, so send both and let the text be the short version.</div>
+      </div>
+    </section>
+
+    <section style="padding:0 40px 20px;border-top:1px solid #E4DACA">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin:30px 0 4px">
+        <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:30px;letter-spacing:0.02em;text-transform:uppercase;margin:0">Portal invite &amp; opt-in</h2>
+        <span style="font-size:14px;color:#C24A16">{{ optInSummary }}</span>
+      </div>
+      <p style="margin:0 0 18px;color:#7A6A52;max-width:70ch">Send this once to the whole roster. Until a family has ticked both boxes you cannot text them a rain cancellation, so this is the message that makes everything else work.</p>
+      <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:24px;margin-bottom:34px">
+        <div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+            <sc-for list="{{ blastTabs }}" as="b" hint-placeholder-count="2">
+              <button onClick="{{ b.pick }}" style="cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;padding:8px 16px;border-radius:2px;background:{{ b.bg }};color:{{ b.fg }};border:1px solid {{ b.bd }}">{{ b.label }}</button>
+            </sc-for>
+          </div>
+          <pre style="white-space:pre-wrap;font-family:Barlow,sans-serif;font-size:15.5px;line-height:1.62;color:#3B4A63;background:#fff;border:1px solid #E4DACA;padding:16px 18px;margin:0;max-height:420px;overflow:auto">{{ blastText }}</pre>
+          <button onClick="{{ copyBlast }}" style="margin-top:12px;border:none;cursor:pointer;background:#C24A16;color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;letter-spacing:0.08em;text-transform:uppercase;padding:12px 24px;border-radius:2px">Copy message</button>
+          <div style="font-size:14.5px;color:#4F6B1E;margin-top:8px;max-width:60ch">{{ blastMsg }}</div>
+        </div>
+        <div>
+          <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6A52;margin-bottom:8px">Consent on file — click to update</div>
+          <div style="background:#fff;border:1px solid #E4DACA">
+            <sc-for list="{{ optInRows }}" as="r" hint-placeholder-count="10">
+              <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;padding:10px 14px;border-bottom:1px solid #F5EFE4">
+                <div style="min-width:0">
+                  <div style="font-weight:600;font-size:15.5px">{{ r.name }}</div>
+                  <div style="font-size:13px;color:#7A6A52">{{ r.contact }}</div>
+                </div>
+                <button onClick="{{ r.cycle }}" style="flex:0 0 auto;cursor:pointer;border:none;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;padding:5px 11px;border-radius:2px;background:{{ r.bg }};color:{{ r.fg }};white-space:nowrap">{{ r.label }}</button>
+              </div>
+            </sc-for>
+          </div>
+          <div style="border-left:3px solid #F0B429;background:#FFF8E8;padding:12px 14px;font-size:15px;color:#3B4A63;margin-top:12px;text-wrap:pretty">Keep the record of who agreed and when. Written consent plus a working reply-STOP is what keeps the texting legal.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin:30px 0 4px">
+        <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:30px;letter-spacing:0.02em;text-transform:uppercase;margin:0">Academy inbox</h2>
+        <span style="font-size:14px;color:#7A6A52">{{ inboxCount }}</span>
+      </div>
+      <p style="margin:0 0 18px;color:#7A6A52;max-width:70ch">Every family message lands here — cancellations, make-ups, billing. Answer from one place instead of four phones.</p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:34px">
+        <sc-for list="{{ inboxThreads }}" as="t" hint-placeholder-count="2">
+          <div style="background:#fff;border:1px solid {{ t.borderColor }};padding:14px 16px">
+            <button onClick="{{ t.toggle }}" style="display:flex;justify-content:space-between;gap:14px;align-items:baseline;width:100%;background:none;border:none;padding:0;cursor:pointer;text-align:left;flex-wrap:wrap">
+              <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;letter-spacing:0.04em;text-transform:uppercase;color:#152342">{{ t.who }}</span>
+              <span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:2px;background:{{ t.statusBg }};color:{{ t.statusFg }}">{{ t.statusLabel }}</span>
+            </button>
+            <div style="font-size:15.5px;color:#3B4A63;margin-top:4px;text-wrap:pretty">{{ t.preview }}</div>
+            <div style="font-size:13px;margin-top:3px;color:{{ t.metaColor }}">{{ t.meta }}</div>
+
+            <sc-if value="{{ t.expanded }}">
+              <div style="display:flex;flex-direction:column;gap:8px;margin:14px 0;padding-top:12px;border-top:1px solid #EFE7D8">
+                <sc-for list="{{ t.msgs }}" as="m" hint-placeholder-count="2">
+                  <div style="display:flex;flex-direction:column;align-items:{{ m.align }}">
+                    <div style="max-width:80%;background:{{ m.bg }};color:{{ m.fg }};padding:9px 12px;border-radius:3px;font-size:15.5px;text-wrap:pretty">{{ m.text }}</div>
+                    <div style="font-size:12px;color:#7A6A52;margin-top:3px">{{ m.who }}</div>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+                <sc-for list="{{ t.quick }}" as="q" hint-placeholder-count="3">
+                  <button onClick="{{ q.use }}" style="cursor:pointer;font-size:13.5px;padding:6px 11px;border-radius:2px;background:#F4F1E8;color:#152342;border:1px solid #E4DACA;text-align:left">{{ q.label }}</button>
+                </sc-for>
+              </div>
+              <textarea value="{{ t.reply }}" onChange="{{ t.setReply }}" placeholder="Type your reply…" style="width:100%;min-height:72px;font-family:Barlow,sans-serif;font-size:16px;padding:10px 12px;border:1px solid #D8CCB6;border-radius:2px;background:#FDFBF6;color:#152342"></textarea>
+              <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+                <button onClick="{{ t.send }}" style="border:none;cursor:pointer;background:#152342;color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;padding:10px 20px;border-radius:2px">Reply</button>
+                <button onClick="{{ t.resolve }}" style="cursor:pointer;background:#fff;color:#4F6B1E;border:1px solid #4F6B1E;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;padding:10px 20px;border-radius:2px">Mark resolved</button>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:30px;letter-spacing:0.02em;text-transform:uppercase;margin:30px 0 4px">Session report</h2>
+      <p style="margin:0 0 18px;color:#7A6A52;max-width:70ch">Your write-up after a session. It appears in that player's portal under coach notes, next to their goals.</p>
+      <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:24px">
+        <div style="background:#fff;border:1px solid #E4DACA;padding:16px 18px">
+          <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6A52;margin-bottom:6px">Player</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">
+            <sc-for list="{{ cfPlayerBtns }}" as="p" hint-placeholder-count="2">
+              <button onClick="{{ p.pick }}" style="cursor:pointer;font-size:14px;padding:7px 14px;border-radius:2px;background:{{ p.bg }};color:{{ p.fg }};border:1px solid {{ p.bd }}">{{ p.label }}</button>
+            </sc-for>
+          </div>
+          <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6A52;margin-bottom:4px">Session rating</div>
+          <div style="display:flex;gap:4px;margin-bottom:16px">
+            <sc-for list="{{ cfStars }}" as="s" hint-placeholder-count="5">
+              <button onClick="{{ s.set }}" style="background:none;border:none;cursor:pointer;font-size:28px;line-height:1;padding:0 2px;color:{{ s.color }}">{{ s.glyph }}</button>
+            </sc-for>
+          </div>
+          <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6A52;margin-bottom:6px">What you worked on</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">
+            <sc-for list="{{ cfTagBtns }}" as="t" hint-placeholder-count="7">
+              <button onClick="{{ t.pick }}" style="cursor:pointer;font-size:14px;padding:6px 12px;border-radius:2px;background:{{ t.bg }};color:{{ t.fg }};border:1px solid {{ t.bd }}">{{ t.label }}</button>
+            </sc-for>
+          </div>
+          <label style="display:block;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6A52;margin-bottom:4px">Note to the player and parent</label>
+          <textarea value="{{ cfText }}" onChange="{{ setCfText }}" placeholder="Best footwork week yet. Rushing the second serve when down a point — we will drill it Thursday." style="width:100%;min-height:100px;font-family:Barlow,sans-serif;font-size:16px;padding:10px 12px;border:1px solid #D8CCB6;border-radius:2px;background:#FDFBF6;color:#152342"></textarea>
+          <button onClick="{{ submitCoachNote }}" style="margin-top:10px;border:none;cursor:pointer;background:#152342;color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;letter-spacing:0.08em;text-transform:uppercase;padding:12px 24px;border-radius:2px">File report</button>
+          <div style="font-size:14px;color:#4F6B1E;margin-top:8px">{{ cfMsg }}</div>
+        </div>
+
+        <div>
+          <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6A52;margin-bottom:8px">Recently filed</div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:22px">
+            <sc-for list="{{ cfRecent }}" as="r" hint-placeholder-count="2">
+              <div style="background:#fff;border:1px solid #E4DACA;border-left:4px solid #152342;padding:12px 14px">
+                <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap">
+                  <span style="font-weight:600;font-size:15.5px">{{ r.who }}</span>
+                  <span style="color:#F0B429;font-size:16px;letter-spacing:2px">{{ r.stars }}</span>
+                </div>
+                <div style="font-size:15.5px;color:#3B4A63;margin-top:3px;text-wrap:pretty">{{ r.text }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="font-size:15px;color:#7A6A52;margin-top:-14px;margin-bottom:22px">{{ cfEmpty }}</div>
+
+          <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6A52;margin-bottom:8px">What players said back</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ playerFeedbackIn }}" as="f" hint-placeholder-count="2">
+              <div style="background:#fff;border:1px solid #E4DACA;border-left:4px solid #F0B429;padding:12px 14px">
+                <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap">
+                  <span style="font-weight:600;font-size:15.5px">{{ f.who }}</span>
+                  <span style="color:#F0B429;font-size:16px;letter-spacing:2px">{{ f.stars }}</span>
+                </div>
+                <div style="font-size:15.5px;color:#3B4A63;margin-top:3px;text-wrap:pretty">{{ f.text }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="font-size:15px;color:#7A6A52;margin-top:8px">{{ playerFeedbackEmpty }}</div>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <footer style="padding:22px 40px;border-top:1px solid #E4DACA;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:14.5px;color:#7A6A52">
+    <span>SG Tennis Academy · Memorial Northwest Subdivision Tennis &amp; Pickleball</span>
+    <span>David 817-995-1001 · Sammy 832-724-8891</span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1100}}">
+const SESSIONS = [
+  {name:'Session I', dates:'Aug 17 – 27', length:'2-week', start:'2026-08-17', end:'2026-08-27', accent:'#C24A16'},
+  {name:'Session II', dates:'Aug 31 – Sep 24', length:'4-week', start:'2026-08-31', end:'2026-09-24', accent:'#4F6B1E'},
+  {name:'Session III', dates:'Sep 28 – Oct 23', length:'4-week', start:'2026-09-28', end:'2026-10-23', accent:'#C24A16'},
+  {name:'Session IV', dates:'Oct 23 – Nov 20', length:'4-week', start:'2026-10-23', end:'2026-11-20', accent:'#4F6B1E'},
+  {name:'Thanksgiving Camp', dates:'Nov 23 – 27', length:'Camp week', start:'2026-11-23', end:'2026-11-27', accent:'#F0B429'},
+  {name:'Session V', dates:'Nov 30 – Dec 17', length:'3-week', start:'2026-11-30', end:'2026-12-17', accent:'#C24A16'},
+  {name:'Christmas Camp', dates:'Dec 21 – 24', length:'Camp week', start:'2026-12-21', end:'2026-12-24', accent:'#F0B429'},
+  {name:"New Year's Camp", dates:'Dec 28 – 31', length:'Camp week', start:'2026-12-28', end:'2026-12-31', accent:'#F0B429'}
+];
+
+const PRICES = [
+  {name:'1 day / week', note:'One drill day per week for the session', price:'$300'},
+  {name:'Each added day', note:'Every extra weekday added to the same session', price:'$250'},
+  {name:'Drop-in', note:'Single drill session, space permitting', price:'$85'},
+  {name:'Saturday match play', note:'Supervised match play, 12:00 – 3:00 PM', price:'$75'}
+];
+
+const PACKS = [
+  {id:'wk1', name:'1 day / week', note:'4 drill credits — one day a week for a 4-week session', price:300, credits:4, kind:'drill'},
+  {id:'wk2', name:'Added day / week', note:'4 more drill credits at the returning rate', price:250, credits:4, kind:'drill'},
+  {id:'drop', name:'Drop-in', note:'1 drill credit, use it any weekday', price:85, credits:1, kind:'drill'},
+  {id:'match', name:'Saturday match play', note:'1 match credit', price:75, credits:1, kind:'match'},
+  {id:'course', name:'Online coaching', note:'Season-long course access, video review and a monthly 1:1 call', price:149, credits:0, kind:'course'}
+];
+
+const COURSE = {
+  name:'SG Online Coaching',
+  price:149,
+  blurb:'For players who want work between sessions — and for families too far from Memorial NW to drill four days a week.',
+  includes:[
+    'Twelve-module video curriculum, foundational through competitive',
+    'Upload a match or a serve, get a coach video review inside 48 hours',
+    'One 1:1 video call with David or Sammy each month',
+    'At-home drill plan that updates with your goals in this portal'
+  ],
+  modules:[
+    {n:'01', title:'Grips, stance and the ready position', len:'18 min'},
+    {n:'02', title:'Forehand: swing path and contact point', len:'24 min'},
+    {n:'03', title:'Backhand: one hand and two', len:'22 min'},
+    {n:'04', title:'Serve mechanics from the ground up', len:'31 min'},
+    {n:'05', title:'Second serve under pressure', len:'19 min'},
+    {n:'06', title:'Rally tolerance and shot selection', len:'26 min'}
+  ]
+};
+
+const PLAYERS = [
+  {id:'ava', name:'Ava', last:'G.', age:13, level:'Competitive', coach:'David',
+   utrStart:3.4, utr:4.2, utrTarget:5.0, attended:14, scheduled:16, streak:5,
+   focus:'Second serve depth and holding the baseline under pressure.',
+   goals:[
+     {id:'a1', label:'Reach UTR 5.0 by December', current:4.2, target:5.0, floor:3.4, unit:'UTR'},
+     {id:'a2', label:'Serve 60% first serves in match play', current:48, target:60, floor:35, unit:'%'},
+     {id:'a3', label:'Play 8 Saturday match sessions', current:5, target:8, floor:0, unit:'sessions'}
+   ],
+   notes:[
+     {date:'Aug 29', text:'Forehand is match-ready. Wants to rush the second serve when down a point.'},
+     {date:'Aug 22', text:'Best footwork week yet. Moved up to the 12-court group.'}
+   ]},
+  {id:'noah', name:'Noah', last:'G.', age:10, level:'Foundational', coach:'Sammy',
+   utrStart:1.6, utr:2.1, utrTarget:3.0, attended:9, scheduled:12, streak:2,
+   focus:'Consistent rally length and getting comfortable at the net.',
+   goals:[
+     {id:'n1', label:'Rally 15 balls in a row', current:9, target:15, floor:3, unit:'balls'},
+     {id:'n2', label:'Reach UTR 3.0', current:2.1, target:3.0, floor:1.6, unit:'UTR'},
+     {id:'n3', label:'Attend 12 drill sessions this season', current:9, target:12, floor:0, unit:'sessions'}
+   ],
+   notes:[
+     {date:'Aug 27', text:'Volleys clicked this week. Still turns away from high balls.'},
+     {date:'Aug 20', text:'Great attitude, needs to slow down between points.'}
+   ]}
+];
+
+const ROSTER = [
+  {name:'Ava G.', contact:'sam@example.com · 832-724-8891'},
+  {name:'Noah G.', contact:'sam@example.com · 832-724-8891'},
+  {name:'Mia Okafor', contact:'m.okafor@example.com · 281-555-0142'},
+  {name:'Liam Cortez', contact:'cortez.fam@example.com · 713-555-0198'},
+  {name:'Sofia Reyes', contact:'sreyes@example.com · 832-555-0117'},
+  {name:'Ethan Park', contact:'parkhouse@example.com · 281-555-0163'},
+  {name:'Jack Delaney', contact:'jdelaney@example.com · 346-555-0125'},
+  {name:'Chloe Vasquez', contact:'vasquezc@example.com · 713-555-0179'},
+  {name:'Owen Fitzgerald', contact:'ofitz@example.com · 832-555-0188'},
+  {name:'Isabella Nunes', contact:'nunes.i@example.com · 281-555-0104'}
+];
+const REASONS = [
+  {id:'rain', label:'Rain / wet courts', line:'heavy rain has left the courts unplayable'},
+  {id:'storm', label:'Lightning in the area', line:'lightning in the area means we cannot be on court'},
+  {id:'heat', label:'Heat advisory', line:'a heat advisory makes it unsafe to run the session'},
+  {id:'court', label:'Courts unavailable', line:'the courts are unavailable to us for this slot'},
+  {id:'coach', label:'Coach unavailable', line:'your coach is out and we could not cover the slot'}
+];
+
+const SCHOOL = {
+  ava: {
+    school:'Klein Oak High School', grade:'9th grade', clerk:'attendance@kleinoak.example',
+    enrolled:175, required:0.9, missed:9, ncaaEligible:true,
+    absences:[
+      {date:'Aug 21', reason:'USTA L4 — Waco', status:'Excused', doc:true},
+      {date:'Aug 22', reason:'USTA L4 — Waco', status:'Excused', doc:true},
+      {date:'Sep 11', reason:'ZAT — Sugar Land', status:'Pending', doc:false},
+      {date:'Sep 12', reason:'ZAT — Sugar Land', status:'Pending', doc:false}
+    ],
+    core:[
+      {area:'English', need:4, done:1, note:'English I in progress'},
+      {area:'Math (Algebra I+)', need:3, done:1, note:'Algebra I complete'},
+      {area:'Natural science', need:2, done:0, note:'Biology this year'},
+      {area:'Social science', need:2, done:0, note:'—'},
+      {area:'Additional core', need:5, done:1, note:'Spanish I complete'}
+    ]
+  },
+  noah: {
+    school:'Theiss Elementary', grade:'5th grade', clerk:'attendance@theiss.example',
+    enrolled:175, required:0.9, missed:3, ncaaEligible:false,
+    absences:[
+      {date:'Aug 24', reason:'Family travel', status:'Excused', doc:true},
+      {date:'Sep 14', reason:'Champions junior open', status:'Pending', doc:false},
+      {date:'Sep 15', reason:'Champions junior open', status:'Pending', doc:false}
+    ],
+    core:[]
+  }
+};
+
+const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const iso = d => d.toISOString().slice(0,10);
+const fmt = k => { const d=new Date(k+'T12:00:00'); return DAYS[d.getDay()]+', '+MON[d.getMonth()]+' '+d.getDate(); };
+const money = n => '$'+Math.round(n).toLocaleString();
+const store = {
+  get(k){ try{ return window.localStorage.getItem(k); }catch(e){ return null; } },
+  set(k,v){ try{ window.localStorage.setItem(k,v); }catch(e){} }
+};
+
+class Component extends DCLogic {
+  state = { view:'home', drill:0, match:0, cart:[], bookings:[], msg:'', today:iso(new Date()), player:'ava' };
+
+  componentDidMount(){
+    try{
+      const s=JSON.parse(store.get('sga.portal')||'{}');
+      this.setState({drill:s.drill||0, match:s.match||0, bookings:s.bookings||[], course:!!s.course});
+    }catch(e){}
+    try{ this.setState({feedback:JSON.parse(store.get('sga.feedback')||'[]')}); }catch(e){}
+    try{ this.setState({coachFb:JSON.parse(store.get('sga.coachfb')||'[]')}); }catch(e){}
+    try{
+      const t=JSON.parse(store.get('sga.threads')||'null');
+      this.setState({threads: t || [
+        {id:'seed1', player:'noah', subject:'Cancel Thursday — family trip', status:'open',
+         msgs:[{from:'family', text:'We are out of town Thursday. Can we move the credit to Saturday match play?', when:'Sep 1, 19:04'}]},
+        {id:'seed2', player:'ava', subject:'Make-up for the rained-out session', status:'resolved',
+         msgs:[{from:'family', text:'Was last Tuesday cancelled for rain? Ava never got a slot back.', when:'Aug 26, 08:12'},
+               {from:'coach', text:'It was — credit is back on your account and you can rebook any weekday in the portal.', when:'Aug 26, 09:30'}]}
+      ]});
+    }catch(e){}
+  }
+  persist(next){
+    const s=Object.assign({drill:this.state.drill, match:this.state.match, bookings:this.state.bookings, course:this.state.course}, next);
+    store.set('sga.portal', JSON.stringify({drill:s.drill, match:s.match, bookings:s.bookings, course:s.course}));
+    this.setState(s);
+  }
+
+  sessionFor(key){
+    for(const s of SESSIONS){ if(key>=s.start && key<=s.end) return s; }
+    return null;
+  }
+  buildSlots(){
+    const out=[]; const start=new Date(this.state.today+'T12:00:00');
+    for(let i=0;i<28 && out.length<10;i++){
+      const d=new Date(start); d.setDate(d.getDate()+i);
+      const key=iso(d), dow=d.getDay();
+      const sess=this.sessionFor(key);
+      if(!sess) continue;
+      if(dow>=1 && dow<=4) out.push({key, type:'drill', time:'4:30 – 6:30 PM', label:'Junior drills', cap:12, sess});
+      else if(dow===6) out.push({key, type:'match', time:'12:00 – 3:00 PM', label:'Match play', cap:16, sess});
+    }
+    return out;
+  }
+  book(slot){
+    const has = slot.type==='drill' ? this.state.drill : this.state.match;
+    if(has<1){
+      this.setState({msg:'No '+slot.type+' credits left — add a pack to the cart and check out.'});
+      return;
+    }
+    const b=this.state.bookings.concat([{key:slot.key,type:slot.type,time:slot.time,label:slot.label,session:slot.sess.name,player:this.state.player}]);
+    const next={bookings:b, msg:'Booked '+fmt(slot.key)+'.'};
+    if(slot.type==='drill') next.drill=this.state.drill-1; else next.match=this.state.match-1;
+    this.persist(next);
+  }
+  cancel(i){
+    const b=this.state.bookings.slice();
+    const gone=b.splice(i,1)[0];
+    const days=Math.round((new Date(gone.key+'T12:00:00')-new Date(this.state.today+'T12:00:00'))/86400000);
+    const next={bookings:b};
+    let note;
+    if(days>=7){
+      if(gone.type==='drill') next.drill=this.state.drill+1; else next.match=this.state.match+1;
+      note='Cancelled with '+days+' days notice — credit returned in full.';
+    } else if(days>=1){
+      note='Cancelled inside 7 days — $50 back, credit not returned.';
+    } else {
+      note='Same-day cancellation — the credit is used.';
+    }
+    next.msg=note;
+    this.persist(next);
+  }
+
+  submitFeedback(){
+    const st=this.state;
+    if(!st.fbRating){ this.setState({fbMsg:'Pick a rating first.'}); return; }
+    const entry={player:st.player, rating:st.fbRating, text:(st.fbText||'').trim(),
+      about:st.fbAbout||'Last session', when:fmt(st.today)};
+    const fb=(st.feedback||[]).concat([entry]);
+    store.set('sga.feedback', JSON.stringify(fb));
+    this.setState({feedback:fb, fbRating:0, fbText:'', fbMsg:'Thanks — sent to '+(PLAYERS.filter(p=>p.id===st.player)[0]||{coach:'your coach'}).coach+'.'});
+  }
+
+  saveThreads(list, extra){
+    store.set('sga.threads', JSON.stringify(list));
+    this.setState(Object.assign({threads:list}, extra||{}));
+  }
+  nowStamp(){ const d=new Date(); return MON[d.getMonth()]+' '+d.getDate()+', '+d.toTimeString().slice(0,5); }
+  startThread(subject, body){
+    const st=this.state;
+    const text=(body||'').trim();
+    if(!text){ this.setState({msgErr:'Write your message first.'}); return; }
+    const t={id:'t'+Date.now(), player:st.player, subject:subject||'General question',
+      status:'open', msgs:[{from:'family', text, when:this.nowStamp()}]};
+    this.saveThreads((st.threads||[]).concat([t]), {msgDraft:'', msgSubject:'', msgErr:'', openThread:t.id});
+  }
+  replyThread(id, from, text){
+    if(!(text||'').trim()) return;
+    const list=(this.state.threads||[]).map(t=> t.id!==id ? t :
+      Object.assign({}, t, {msgs:t.msgs.concat([{from, text:text.trim(), when:this.nowStamp()}])}));
+    this.saveThreads(list, from==='coach' ? {coachReply:''} : {msgDraft:''});
+  }
+  closeThread(id){
+    const list=(this.state.threads||[]).map(t=> t.id!==id ? t : Object.assign({},t,{status:'resolved'}));
+    this.saveThreads(list);
+  }
+
+  submitCoachNote(){
+    const st=this.state;
+    const target=st.cfPlayer||PLAYERS[0].id;
+    if(!(st.cfText||'').trim()){ this.setState({cfMsg:'Write a line before you save.'}); return; }
+    const entry={player:target, date:fmt(st.today).replace(/^\w+, /,''), text:st.cfText.trim(),
+      rating:st.cfRating||0, tags:(st.cfTags||[]).slice(), coach:st.cfCoach||'David'};
+    const list=(st.coachFb||[]).concat([entry]);
+    store.set('sga.coachfb', JSON.stringify(list));
+    this.setState({coachFb:list, cfText:'', cfRating:0, cfTags:[],
+      cfMsg:'Saved to '+(PLAYERS.filter(p=>p.id===target)[0]||{name:''}).name+"'s portal."});
+  }
+
+  rosterFor(key, cap){
+    const seed=parseInt(key.replace(/-/g,''),10);
+    const n=6+(seed%4);
+    const out=[];
+    for(let i=0;i<n;i++) out.push(ROSTER[(seed+i*3)%ROSTER.length]);
+    const seen={}; return out.filter(r=>{ if(seen[r.name]) return false; seen[r.name]=1; return true; });
+  }
+
+  sendNotice(fromKey, toKey, text){
+    const b=this.state.bookings.map(x=> x.key===fromKey ? Object.assign({},x,{key:toKey, movedFrom:fromKey}) : x);
+    this.persist({bookings:b});
+    try{ if(navigator.clipboard) navigator.clipboard.writeText(text); }catch(e){}
+    this.setState({coachSent:'Notice copied to your clipboard and everyone on '+fmt(fromKey)+' moved to '+fmt(toKey)+'.'});
+  }
+
+  renderVals(){
+    const st=this.state;
+    const slots=this.buildSlots();
+    const bookedKeys={};
+    st.bookings.forEach(b=>{ bookedKeys[b.key]=true; });
+
+    const slotRows=slots.map(s=>{
+      const booked=!!bookedKeys[s.key];
+      const taken=(s.key.charCodeAt(9)*3)%(s.cap-2);
+      const left=Math.max(1,s.cap-taken-(booked?1:0));
+      return {
+        day:fmt(s.key),
+        detail:s.label+' · '+s.time,
+        sessionName:s.sess.name,
+        accent: s.type==='match' ? '#4F6B1E' : '#C24A16',
+        spots: booked ? 'You are in' : left+' of '+s.cap+' spots left',
+        spotsColor: booked ? '#4F6B1E' : (left<=3 ? '#C24A16' : '#7A6A52'),
+        btnLabel: booked ? 'Booked' : (s.type==='match' ? 'Book match' : 'Book drill'),
+        btnBg: booked ? '#EFE7D8' : '#152342',
+        btnFg: booked ? '#7A6A52' : '#ffffff',
+        btnBd: booked ? '#E4DACA' : '#152342',
+        act: booked ? (()=>this.setState({msg:'Already booked for '+fmt(s.key)+'.'})) : (()=>this.book(s))
+      };
+    });
+
+    const cartRows=st.cart.map((c,i)=>({
+      line:c.name, amount:money(c.price),
+      remove:()=>{ const n=st.cart.slice(); n.splice(i,1); this.setState({cart:n}); }
+    }));
+    const total=st.cart.reduce((a,c)=>a+c.price,0);
+    const hasCart=st.cart.length>0;
+
+    const bookingRows=st.bookings
+      .map((b,i)=>({b,i}))
+      .sort((x,y)=>x.b.key.localeCompare(y.b.key))
+      .map(({b,i})=>{
+        const days=Math.round((new Date(b.key+'T12:00:00')-new Date(st.today+'T12:00:00'))/86400000);
+        return {
+          day:fmt(b.key),
+          detail:(b.player? (PLAYERS.filter(p=>p.id===b.player)[0]||{name:''}).name+' · ' : '')+b.label+' · '+b.time+' · '+b.session,
+          refund: days>=7 ? 'Free cancellation for '+(days-7)+' more days' : (days>=1 ? 'Inside 7 days — $50 back only' : 'Same day — no refund'),
+          refundColor: days>=7 ? '#4F6B1E' : '#C24A16',
+          cancel:()=>this.cancel(i)
+        };
+      });
+
+    const cur = PLAYERS.filter(p=>p.id===st.player)[0] || PLAYERS[0];
+    const playerTabs = PLAYERS.map(p=>({
+      label:p.name, pick:()=>this.setState({player:p.id}),
+      bg: p.id===cur.id ? '#152342' : '#ffffff',
+      fg: p.id===cur.id ? '#ffffff' : '#152342',
+      bd: p.id===cur.id ? '#152342' : '#D8CCB6'
+    }));
+    const goalRows = cur.goals.map(g=>{
+      const span = g.target - g.floor;
+      const p = span>0 ? Math.max(0, Math.min(1, (g.current-g.floor)/span)) : 0;
+      return {
+        label:g.label,
+        value: g.current + (g.unit==='%' ? '%' : ' '+g.unit) + ' of ' + g.target + (g.unit==='%' ? '%' : ' '+g.unit),
+        barW: Math.max(3, p*100)+'%',
+        barColor: p>=1 ? '#4F6B1E' : (p>=0.6 ? '#C24A16' : '#F0B429'),
+        pctTxt: Math.round(p*100)+'%'
+      };
+    });
+    const attendPct = cur.scheduled ? Math.round((cur.attended/cur.scheduled)*100) : 0;
+    const progressStats = [
+      {figure:cur.utr.toFixed(1), label:'current UTR', sub:'+'+(cur.utr-cur.utrStart).toFixed(1)+' since Aug 17'},
+      {figure:cur.attended+'/'+cur.scheduled, label:'sessions attended', sub:attendPct+'% attendance'},
+      {figure:cur.streak+' wks', label:'current streak', sub:'consecutive weeks on court'},
+      {figure:cur.utrTarget.toFixed(1), label:'season UTR target', sub:'set with '+cur.coach}
+    ];
+
+    // ---- coach: cancellation / weather notice ----
+    const affectedKey = st.coachDate || (slots[0] && slots[0].key) || '';
+    const affected = slots.filter(s=>s.key===affectedKey)[0] || slots[0] || null;
+    const laterSame = affected ? slots.filter(s=>s.key>affected.key && s.type===affected.type) : [];
+    const makeupKey = st.coachMakeup && laterSame.some(s=>s.key===st.coachMakeup)
+      ? st.coachMakeup : (laterSame[0] ? laterSame[0].key : '');
+    const makeup = laterSame.filter(s=>s.key===makeupKey)[0] || null;
+    const reason = REASONS.filter(r=>r.id===(st.coachReason||'rain'))[0] || REASONS[0];
+    const roster = affected ? this.rosterFor(affected.key) : [];
+    const mine = st.bookings.filter(b=>affected && b.key===affected.key).length;
+
+    const noticeText = affected ? (
+      'SG Tennis Academy — '+affected.label+' on '+fmt(affected.key)+', '+affected.time+' is cancelled: '+reason.line+'. '+
+      'Your credit is back on your account, nothing is lost.\n\n'+
+      (makeup
+        ? 'Next open slot: '+fmt(makeup.key)+', '+makeup.time+' at Memorial NW. Tap to claim your spot: sgtennisacademy.com/portal?rebook='+makeup.key+'\n\n'
+        : 'We will post the make-up slot in the portal as soon as it is confirmed: sgtennisacademy.com/portal\n\n')+
+      'Reply STOP to opt out of texts. Questions: David 817-995-1001.'
+    ) : '';
+
+    const coachDateBtns = slots.map(s=>({
+      label: fmt(s.key).replace(/^(\w{3})\w*,/,'$1,')+' · '+(s.type==='match'?'Match':'Drills'),
+      pick:()=>this.setState({coachDate:s.key, coachMakeup:'', coachSent:''}),
+      bg: s.key===affectedKey?'#152342':'#ffffff',
+      fg: s.key===affectedKey?'#ffffff':'#152342',
+      bd: s.key===affectedKey?'#152342':'#D8CCB6'
+    }));
+    const reasonBtns = REASONS.map(r=>({
+      label:r.label, pick:()=>this.setState({coachReason:r.id, coachSent:''}),
+      bg: r.id===reason.id?'#C24A16':'#ffffff',
+      fg: r.id===reason.id?'#ffffff':'#152342',
+      bd: r.id===reason.id?'#C24A16':'#D8CCB6'
+    }));
+    const makeupBtns = laterSame.slice(0,5).map(s=>({
+      label: fmt(s.key)+' · '+s.time,
+      pick:()=>this.setState({coachMakeup:s.key, coachSent:''}),
+      bg: s.key===makeupKey?'#4F6B1E':'#ffffff',
+      fg: s.key===makeupKey?'#ffffff':'#152342',
+      bd: s.key===makeupKey?'#4F6B1E':'#D8CCB6'
+    }));
+
+    return {
+      isHome:st.view==='home', isPortal:st.view==='portal', isCoach:st.view==='coach',
+      goCoach:()=>this.setState({view:'coach'}),
+      navCoachColor: st.view==='coach' ? '#C24A16' : '#152342',
+      coachDateBtns, reasonBtns, makeupBtns,
+      coachHeadline: affected ? affected.label+' · '+fmt(affected.key)+' · '+affected.time : 'No upcoming sessions',
+      coachSession: affected ? affected.sess.name : '',
+      rosterRows: roster,
+      rosterCount: roster.length+' families on this session'+(mine?' · includes '+mine+' of your bookings':''),
+      makeupLine: makeup ? 'Everyone is offered '+fmt(makeup.key)+', '+makeup.time : 'No later slot of this type in the next four weeks — the notice will point them at the portal instead.',
+      noticeText,
+      sendNotice: affected && makeup ? (()=>this.sendNotice(affected.key, makeup.key, noticeText)) : (()=>this.setState({coachSent:'Pick a make-up slot first.'})),
+      copyNotice: ()=>{ try{ if(navigator.clipboard) navigator.clipboard.writeText(noticeText); }catch(e){} this.setState({coachSent:'Message copied. Paste it into your text or email blast.'}); },
+      coachSent: st.coachSent||'',
+
+      cfPlayerBtns: PLAYERS.map(p=>({
+        label:p.name+' '+p.last, pick:()=>this.setState({cfPlayer:p.id, cfCoach:p.coach, cfMsg:''}),
+        bg:(st.cfPlayer||PLAYERS[0].id)===p.id?'#152342':'#ffffff',
+        fg:(st.cfPlayer||PLAYERS[0].id)===p.id?'#ffffff':'#152342',
+        bd:(st.cfPlayer||PLAYERS[0].id)===p.id?'#152342':'#D8CCB6'
+      })),
+      cfStars:[1,2,3,4,5].map(n=>({
+        glyph:n<=(st.cfRating||0)?'★':'☆',
+        color:n<=(st.cfRating||0)?'#F0B429':'#C9BCA4',
+        set:()=>this.setState({cfRating:n, cfMsg:''})
+      })),
+      cfTagBtns:['Serve','Forehand','Backhand','Footwork','Net play','Match focus','Attitude'].map(t=>{
+        const on=(st.cfTags||[]).indexOf(t)>=0;
+        return {label:t, bg:on?'#4F6B1E':'#ffffff', fg:on?'#ffffff':'#152342', bd:on?'#4F6B1E':'#D8CCB6',
+          pick:()=>{ const cur=(st.cfTags||[]).slice(); const i=cur.indexOf(t);
+            if(i>=0) cur.splice(i,1); else cur.push(t);
+            this.setState({cfTags:cur, cfMsg:''}); }};
+      }),
+      cfText:st.cfText||'',
+      setCfText:e=>this.setState({cfText:e.target.value}),
+      submitCoachNote:()=>this.submitCoachNote(),
+      cfMsg:st.cfMsg||'',
+      cfRecent:(st.coachFb||[]).slice().reverse().slice(0,5).map(f=>({
+        who:(PLAYERS.filter(p=>p.id===f.player)[0]||{name:''}).name+' · '+f.date,
+        stars:f.rating?'★★★★★'.slice(0,f.rating):'',
+        text:f.text
+      })),
+      cfEmpty:(st.coachFb||[]).length?'':'Nothing filed yet. Notes land in the player’s portal the moment you save.',
+
+      playerFeedbackIn:(st.feedback||[]).slice().reverse().slice(0,6).map(f=>({
+        who:(PLAYERS.filter(p=>p.id===f.player)[0]||{name:'Player'}).name+' · '+f.about,
+        stars:'★★★★★'.slice(0,f.rating),
+        text:f.text||'No note left.'
+      })),
+      playerFeedbackEmpty:(st.feedback||[]).length?'':'No player feedback submitted yet.',
+
+      // ---- portal invite / opt-in blast ----
+      ...(function(self){
+        const s=self.state;
+        const optIn=s.optIn||{};
+        const rows=ROSTER.map((r,i)=>{
+          const state=optIn[r.name]!==undefined ? optIn[r.name] : (i%3===0 ? 'both' : (i%3===1 ? 'email' : 'none'));
+          const label = state==='both' ? 'Text + email' : (state==='email' ? 'Email only' : 'Not opted in');
+          return {
+            name:r.name, contact:r.contact, label:label,
+            bg: state==='both' ? '#EEF3E4' : (state==='email' ? '#FFF3D6' : '#F9E5E2'),
+            fg: state==='both' ? '#4F6B1E' : (state==='email' ? '#9A6B00' : '#A8332A'),
+            cycle:()=>{ const next = state==='none' ? 'email' : (state==='email' ? 'both' : 'none');
+              const m=Object.assign({},optIn); m[r.name]=next; self.setState({optIn:m}); }
+          };
+        });
+        const pending=rows.filter(r=>r.label!=='Text + email').length;
+        const smsText =
+          'SG Tennis Academy — the new player portal is live. Book sessions, buy credits, see your coach notes and message us in one place: sgtennisacademy.com/portal\n\n'+
+          'Set up your account in two minutes and tick the box to get session updates by text and email — that is how we send rain cancellations and make-up slots.\n\n'+
+          'Reply YES to confirm texts, STOP to opt out.';
+        const emailText =
+          'Subject: Your SG Tennis Academy portal is ready — please set it up this week\n\n'+
+          'Hi,\n\n'+
+          'We have moved scheduling, payments and messages into one place. Your portal account is waiting at sgtennisacademy.com/portal.\n\n'+
+          'What you can do there:\n'+
+          '· Book drills and Saturday match play, and see how many credits you have left\n'+
+          '· Buy credit packs and add online coaching\n'+
+          '· Read your coach notes and track your goals for the season\n'+
+          '· Message the academy directly — cancellations, make-ups, billing, all in one thread\n\n'+
+          'When you set up the account, please tick both boxes to receive session updates by text and by email. Weather cancellations and make-up slots go out that way, often the same afternoon, and we cannot send them to you otherwise.\n\n'+
+          'It takes about two minutes. If anything does not work, reply to this email and we will sort it out.\n\n'+
+          'David · 817-995-1001\nSammy · 832-724-8891\nSG Tennis Academy · Memorial Northwest, 17440 Theiss Mail Route Rd, Spring, TX 77379\n\n'+
+          'You are receiving this because you are enrolled in a fall session. Reply UNSUBSCRIBE to stop academy emails.';
+        const which = s.blastChannel==='email' ? emailText : smsText;
+        return {
+          optInRows:rows,
+          optInSummary:pending+' of '+rows.length+' families still need to opt in to texts',
+          blastTabs:[['sms','Text version'],['email','Email version']].map(c=>({
+            label:c[1], pick:()=>self.setState({blastChannel:c[0], blastMsg:''}),
+            bg:(s.blastChannel||'sms')===c[0]?'#152342':'#ffffff',
+            fg:(s.blastChannel||'sms')===c[0]?'#ffffff':'#152342',
+            bd:(s.blastChannel||'sms')===c[0]?'#152342':'#D8CCB6'
+          })),
+          blastText:which,
+          copyBlast:()=>{ try{ if(navigator.clipboard) navigator.clipboard.writeText(which); }catch(e){}
+            self.setState({blastMsg:'Copied. Paste it into your email tool or texting service — send the email version to everyone, the text only to families already opted in.'}); },
+          blastMsg:s.blastMsg||''
+        };
+      })(this),
+
+      // ---- school & travel ----
+      ...(function(self){
+        const sc=SCHOOL[cur.id]||SCHOOL.ava;
+        const allowed=Math.floor(sc.enrolled*(1-sc.required));
+        const pending=sc.absences.filter(a=>a.status==='Pending').length;
+        const used=sc.missed, left=Math.max(0, allowed-used);
+        const barPct=Math.min(100,(used/allowed)*100);
+        const coreDone=sc.core.reduce((a,c)=>a+c.done,0);
+        const coreNeed=sc.core.reduce((a,c)=>a+c.need,0);
+        const t=self.state.travel||{};
+        const evName=t.name||'', evDates=t.dates||'', evCity=t.city||'';
+        const letter=
+          'To the attendance office at '+sc.school+',\n\n'+
+          'This letter confirms that '+cur.name+' '+cur.last+' ('+sc.grade+') is a rostered player with SG Tennis Academy at Memorial Northwest, Spring, Texas.\n\n'+
+          (cur.name+' is scheduled to compete in '+(evName||'[tournament name]')+' on '+(evDates||'[dates]')+' in '+(evCity||'[city]')+
+           '. We are requesting the absence be recorded as excused for a sanctioned athletic competition.\n\n')+
+          'Draw sheets and the confirmation of entry are attached. '+cur.name+' will submit all coursework assigned for those dates on return, and study hall hours at the academy are available before each session.\n\n'+
+          'Please contact us with any questions.\n\n'+
+          (cur.coach==='David' ? 'David · 817-995-1001' : 'Sammy · 832-724-8891')+'\nSG Tennis Academy · 17440 Theiss Mail Route Rd, Spring, TX 77379';
+        return {
+          schoolName:sc.school, schoolGrade:sc.grade, schoolClerk:sc.clerk,
+          attStats:[
+            {figure:used, label:'days missed this year', sub:'of '+sc.enrolled+' enrolled'},
+            {figure:left, label:'days left in budget', sub:'90% rule allows '+allowed},
+            {figure:pending, label:'absences unfiled', sub:pending?'send the letter before the trip':'all documented'}
+          ],
+          attBarW:Math.max(3,barPct)+'%',
+          attBarColor: barPct>85 ? '#C24A16' : (barPct>60 ? '#F0B429' : '#4F6B1E'),
+          attBarNote:used+' of '+allowed+' allowable days used before credit is at risk',
+          absenceRows:sc.absences.map(a=>({
+            date:a.date, reason:a.reason, status:a.status,
+            statusBg: a.status==='Excused' ? '#EEF3E4' : (a.status==='Pending' ? '#FFF3D6' : '#F9E5E2'),
+            statusFg: a.status==='Excused' ? '#4F6B1E' : (a.status==='Pending' ? '#9A6B00' : '#A8332A'),
+            doc: a.doc ? 'Letter on file' : 'No letter filed',
+            docColor: a.doc ? '#7A6A52' : '#C24A16'
+          })),
+          travelName:evName, travelDates:evDates, travelCity:evCity,
+          setTravelName:e=>self.setState({travel:Object.assign({},t,{name:e.target.value})}),
+          setTravelDates:e=>self.setState({travel:Object.assign({},t,{dates:e.target.value})}),
+          setTravelCity:e=>self.setState({travel:Object.assign({},t,{city:e.target.value})}),
+          letterText:letter,
+          copyLetter:()=>{ try{ if(navigator.clipboard) navigator.clipboard.writeText(letter); }catch(e){}
+            self.setState({letterMsg:'Letter copied. Email it to '+sc.clerk+' with the draw sheet attached.'}); },
+          letterMsg:self.state.letterMsg||'',
+          showCore:sc.ncaaEligible, hideCore:!sc.ncaaEligible,
+          coreSummary:coreDone+' of '+coreNeed+' NCAA core courses complete',
+          coreRows:sc.core.map(c=>({
+            area:c.area, count:c.done+' / '+c.need, note:c.note,
+            barW:Math.max(3,(c.done/c.need)*100)+'%',
+            barColor: c.done>=c.need ? '#4F6B1E' : '#F0B429'
+          })),
+          coreNote:'Only courses on the school’s NCAA-approved list count. Check any online or credit-recovery course against the list before enrolling — this is the single most common way eligibility is lost.',
+          youngNote:'NCAA core-course tracking starts in 9th grade. Nothing to file yet — but keep the report cards.'
+        };
+      })(this),
+
+      // ---- centralised messages ----
+      msgTopics:['Cancel a session','Running late','Make-up slot','Billing','Something else'].map(s=>({
+        label:s, pick:()=>this.setState({msgSubject:s, msgErr:''}),
+        bg:(st.msgSubject||'')===s?'#152342':'#ffffff',
+        fg:(st.msgSubject||'')===s?'#ffffff':'#152342',
+        bd:(st.msgSubject||'')===s?'#152342':'#D8CCB6'
+      })),
+      msgDraft:st.msgDraft||'',
+      setMsgDraft:e=>this.setState({msgDraft:e.target.value}),
+      sendMessage:()=>this.startThread(st.msgSubject, st.msgDraft),
+      msgErr:st.msgErr||'',
+      myThreads:(st.threads||[]).filter(t=>t.player===st.player).slice().reverse().map(t=>({
+        subject:t.subject,
+        meta:t.msgs.length+' message'+(t.msgs.length===1?'':'s')+' · '+t.msgs[t.msgs.length-1].when,
+        statusLabel:t.status==='resolved'?'Resolved':'Open',
+        statusBg:t.status==='resolved'?'#EFE7D8':'#4F6B1E',
+        statusFg:t.status==='resolved'?'#7A6A52':'#ffffff',
+        msgs:t.msgs.map(m=>({
+          text:m.text, who:(m.from==='coach'?'Academy':'You')+' · '+m.when,
+          bg:m.from==='coach'?'#F4F1E8':'#152342',
+          fg:m.from==='coach'?'#3B4A63':'#ffffff',
+          align:m.from==='coach'?'flex-start':'flex-end'
+        }))
+      })),
+      noThreads:(st.threads||[]).filter(t=>t.player===st.player).length?'':'No messages yet. Everything you send lands in one academy inbox, not on a coach’s personal phone.',
+
+      inboxThreads:(st.threads||[]).slice().reverse().map(t=>{
+        const open=(st.openThread||'')===t.id;
+        const last=t.msgs[t.msgs.length-1];
+        return {
+          who:(PLAYERS.filter(p=>p.id===t.player)[0]||{name:'Family'}).name+' · '+t.subject,
+          preview:last.text,
+          meta:last.when+' · '+(last.from==='coach'?'you replied last':'waiting on you'),
+          metaColor:last.from==='coach'?'#7A6A52':'#C24A16',
+          statusLabel:t.status==='resolved'?'Resolved':'Open',
+          statusBg:t.status==='resolved'?'#EFE7D8':'#4F6B1E',
+          statusFg:t.status==='resolved'?'#7A6A52':'#ffffff',
+          borderColor:open?'#152342':'#E4DACA',
+          expanded:open,
+          toggle:()=>this.setState({openThread:open?'':t.id, coachReply:''}),
+          msgs:t.msgs.map(m=>({
+            text:m.text, who:(m.from==='coach'?'Academy':'Family')+' · '+m.when,
+            bg:m.from==='coach'?'#152342':'#F4F1E8',
+            fg:m.from==='coach'?'#ffffff':'#3B4A63',
+            align:m.from==='coach'?'flex-end':'flex-start'
+          })),
+          quick:[
+            'Credit is back on your account — rebook any weekday in the portal.',
+            'Moved to the next available slot. Nothing else needed from you.',
+            'That is inside 7 days, so $50 comes back and the credit is used.'
+          ].map(q=>({label:q, use:()=>this.setState({coachReply:q, openThread:t.id})})),
+          reply:st.coachReply||'',
+          setReply:e=>this.setState({coachReply:e.target.value}),
+          send:()=>this.replyThread(t.id,'coach',st.coachReply),
+          resolve:()=>this.closeThread(t.id)
+        };
+      }),
+      inboxCount:(()=>{
+        const open=(st.threads||[]).filter(t=>t.status!=='resolved').length;
+        return open+' open '+(open===1?'thread':'threads')+' · '+(st.threads||[]).length+' total';
+      })(),
+
+      fbStars:[1,2,3,4,5].map(n=>({
+        glyph: n<=(st.fbRating||0) ? '★' : '☆',
+        color: n<=(st.fbRating||0) ? '#F0B429' : '#C9BCA4',
+        set:()=>this.setState({fbRating:n, fbMsg:''})
+      })),
+      fbText:st.fbText||'',
+      setFbText:e=>this.setState({fbText:e.target.value}),
+      fbAboutBtns: slots.slice(0,4).map(s=>({
+        label:fmt(s.key), pick:()=>this.setState({fbAbout:fmt(s.key)+' · '+s.label}),
+        bg:(st.fbAbout||'').indexOf(fmt(s.key))===0?'#152342':'#ffffff',
+        fg:(st.fbAbout||'').indexOf(fmt(s.key))===0?'#ffffff':'#152342',
+        bd:(st.fbAbout||'').indexOf(fmt(s.key))===0?'#152342':'#D8CCB6'
+      })),
+      submitFeedback:()=>this.submitFeedback(),
+      fbMsg:st.fbMsg||'',
+      fbHistory:(st.feedback||[]).filter(f=>f.player===st.player).slice().reverse().map(f=>({
+        stars:'★★★★★'.slice(0,f.rating)+'☆☆☆☆☆'.slice(0,5-f.rating),
+        about:f.about+' · submitted '+f.when,
+        text:f.text||'No note left.'
+      })),
+      fbEmpty:(st.feedback||[]).filter(f=>f.player===st.player).length ? '' : 'No feedback yet. Your coach reads every one of these.',
+
+      courseName:COURSE.name, courseBlurb:COURSE.blurb,
+      coursePrice:money(COURSE.price)+' / season',
+      courseIncludes:COURSE.includes.map(t=>({text:t})),
+      courseModules:COURSE.modules,
+      hasCourse:!!st.course, noCourse:!st.course,
+      courseStatus: st.course ? 'Active — all twelve modules unlocked' : 'Not enrolled',
+      courseCta: st.course ? 'Open module 01' : 'Add online coaching — '+money(COURSE.price),
+      courseAct: st.course
+        ? (()=>this.setState({msg:'Module 01 would open here.'}))
+        : (()=>this.setState({view:'portal', cart:st.cart.concat([PACKS.filter(p=>p.kind==='course')[0]]), msg:'Online coaching added to your cart.'})),
+
+      playerTabs, goalRows, progressStats,
+      playerName:cur.name+' '+cur.last,
+      playerMeta:'Age '+cur.age+' · '+cur.level+' · Coach '+cur.coach,
+      playerFocus:cur.focus,
+      coachNotes:(st.coachFb||[]).filter(f=>f.player===cur.id).slice().reverse().map(f=>({
+        date:f.date+' · '+f.coach+(f.rating?' · '+('★★★★★'.slice(0,f.rating)):'')+(f.tags&&f.tags.length?' · '+f.tags.join(', '):''),
+        text:f.text
+      })).concat(cur.notes),
+      goHome:()=>this.setState({view:'home'}), goPortal:()=>this.setState({view:'portal'}),
+      navHomeColor: st.view==='home' ? '#C24A16' : '#152342',
+      navPortalColor: st.view==='portal' ? '#C24A16' : '#152342',
+
+      sessionList:SESSIONS, priceList:PRICES,
+
+      playerLine:'Fall season, Memorial NW · Aug 17 – Dec 31',
+      drillCredits:st.drill, matchCredits:st.match,
+      scheduleNote:'Next open dates. Drills Monday through Thursday, match play Saturdays.',
+      slots:slotRows,
+
+      packs:PACKS.map(p=>({
+        name:p.name, note:p.note, price:money(p.price),
+        buy:()=>this.setState({cart:st.cart.concat([p]), msg:''})
+      })),
+      cart:cartRows, cartTotal:money(total),
+      checkoutLabel: hasCart ? 'Pay '+money(total) : 'Cart is empty',
+      checkoutBg: hasCart ? '#4F6B1E' : '#EFE7D8',
+      checkoutFg: hasCart ? '#ffffff' : '#7A6A52',
+      checkout: hasCart ? (()=>{
+        let dr=st.drill, mt=st.match;
+        let course=st.course;
+        st.cart.forEach(c=>{ if(c.kind==='drill') dr+=c.credits; else if(c.kind==='match') mt+=c.credits; else if(c.kind==='course') course=true; });
+        this.persist({drill:dr, match:mt, course:course, msg:'Paid '+money(total)+'.'+(course&&!st.course?' Online coaching unlocked.':' Credits added.')});
+        this.setState({cart:[]});
+      }) : (()=>this.setState({msg:'Add a credit pack first.'})),
+      portalMsg:st.msg,
+
+      bookingRows,
+      bookingsEmpty: bookingRows.length ? '' : 'Nothing booked yet. Buy credits, then pick your days above.'
+    };
+  }
+}
+</script>
+</body>
+</html>
